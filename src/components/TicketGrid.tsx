@@ -57,7 +57,7 @@ function Ticket({
 export function TicketGrid({ count, selectedIndex, expired, onPick }: TicketGridProps) {
   const hasPick = selectedIndex !== null
   return (
-    <div className="grid w-full max-w-[28rem] grid-cols-3 gap-3.5">
+    <div className="grid w-full max-w-[22rem] grid-cols-3 gap-2.5">
       {Array.from({ length: count }, (_, i) => {
         let state: 'idle' | 'selected' | 'locked' | 'expired' = 'idle'
         if (expired) state = 'expired'
