@@ -62,7 +62,7 @@ export const GAMES: Record<GameId, GameConfig> = {
     route: '/gosok',
     name: 'Gosok Kartu',
     icon: Sparkles,
-    lead: 'Kamu dapat {1 tiket} yang bisa dibuka!',
+    lead: 'Kamu dapat {1 tiket} yang bisa digosok!',
     instruction: 'Pilih salah satu tiket di bawah untuk membuka bonus yang bisa kamu klaim',
     cta: 'Mulai Gosok',
     steps: [
