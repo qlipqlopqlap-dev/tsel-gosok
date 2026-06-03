@@ -11,7 +11,7 @@ import { fileURLToPath } from 'node:url'
 const ROOT = fileURLToPath(new URL('.', import.meta.url))
 const DIST = join(ROOT, 'dist')
 const HOST = process.env.HOST || '127.0.0.1'
-const PORT = Number(process.env.PORT || 5280)
+const PORT = Number(process.env.PORT || 5286)
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',
@@ -79,5 +79,5 @@ const server = createServer(async (req, res) => {
 })
 
 server.listen(PORT, HOST, () => {
-  console.log(`tsel-gosok serving ${DIST} on http://${HOST}:${PORT}`)
+  console.log(`tsel-gosok-double serving ${DIST} on http://${HOST}:${PORT}`)
 })
