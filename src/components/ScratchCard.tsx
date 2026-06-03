@@ -128,7 +128,7 @@ export function ScratchCard({ onComplete, threshold = 0.5, children, instant = f
             'absolute inset-0 h-full w-full touch-none cursor-grab transition-opacity duration-300',
             revealed ? 'pointer-events-none opacity-0' : 'opacity-100',
           ].join(' ')}
-          aria-label="Gosok kartu untuk membuka hadiah"
+          aria-label="Gosok kartu untuk membuka bonus"
         />
       )}
     </div>

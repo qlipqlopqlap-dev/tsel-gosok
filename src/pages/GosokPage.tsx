@@ -43,7 +43,11 @@ export function GosokPage() {
         expired={expired}
         onExpire={() => setExpired(true)}
       >
-        <TicketGrid count={CAMPAIGN.ticketCount} selectedIndex={picked} expired={expired} onPick={handlePick} />
+        {revealed && prize ? (
+          <ResultOverlay prize={prize} />
+        ) : (
+          <TicketGrid count={CAMPAIGN.ticketCount} selectedIndex={picked} expired={expired} onPick={handlePick} />
+        )}
       </GameScreen>
 
       <ScratchSheet
@@ -53,8 +57,6 @@ export function GosokPage() {
         onScratched={handleScratched}
         onClose={handleCloseSheet}
       />
-
-      <ResultOverlay open={revealed} prize={prize} />
     </>
   )
 }

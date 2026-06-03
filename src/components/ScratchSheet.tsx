@@ -47,7 +47,7 @@ export function ScratchSheet({ open, prize, instant, onScratched, onClose }: Scr
 
             <h2 className="text-center font-display text-2xl font-extrabold">Gosok Tiketmu!</h2>
             <p className="mb-5 mt-1 text-center text-sm text-white/85">
-              {instant ? 'Ketuk kartu untuk membuka hadiahmu.' : 'Gosok area perak untuk membuka hadiahmu.'}
+              {instant ? 'Ketuk kartu untuk membuka bonusmu.' : 'Gosok area perak untuk membuka bonusmu.'}
             </p>
 
             <ScratchCard
