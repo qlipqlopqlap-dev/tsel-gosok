@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 // Hosts allowed to reach the dev/preview server behind the reverse proxy.
-const ALLOWED_HOSTS = ['telkomsel1.qlipmobile.com']
+const ALLOWED_HOSTS = ['tsel.qlipmobile.com']
 
 // Single-game SPA (Gosok Kartu). One page rendered at '/', no router.
 // Dev/preview bind to the game's own port so the landing's localhost links work.

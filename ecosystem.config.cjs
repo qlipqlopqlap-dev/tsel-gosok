@@ -1,5 +1,5 @@
 // PM2 ecosystem config — Gosok Kartu (standalone, port 5280).
-// nginx reverse-proxies telkomsel1.qlipmobile.com → 127.0.0.1:5280.
+// nginx reverse-proxies tsel.qlipmobile.com → 127.0.0.1:5280.
 
 module.exports = {
   apps: [
