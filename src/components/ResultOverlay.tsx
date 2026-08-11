@@ -38,6 +38,11 @@ export function ResultOverlay({ prize }: ResultOverlayProps) {
   }
 
   const showUnit = Boolean(prize.bigUnit)
+  // Long values ("10.000") need a smaller type ramp than short ones ("15").
+  const bigSize =
+    prize.bigValue.length <= 3
+      ? 'text-[clamp(3.5rem,18vw,5rem)]'
+      : 'text-[clamp(2.5rem,13vw,3.5rem)]'
 
   return (
     <motion.div
@@ -48,11 +53,11 @@ export function ResultOverlay({ prize }: ResultOverlayProps) {
       transition={{ type: 'spring', damping: 22, stiffness: 260 }}
       className="w-full text-center"
     >
-      {/* ★ Selamat Kamu Menang ★ */}
-      <h2 className="flex items-center justify-center gap-2.5 font-display text-[clamp(1.05rem,4.6vw,1.4rem)] font-extrabold text-tsel-gold drop-shadow-[0_2px_0_rgba(124,12,30,0.5)]">
-        <Star className="h-5 w-5 fill-tsel-gold text-tsel-gold" strokeWidth={2} />
-        Selamat Kamu Menang
-        <Star className="h-5 w-5 fill-tsel-gold text-tsel-gold" strokeWidth={2} />
+      {/* ★ Selamat kamu bisa langsung ambil ★ */}
+      <h2 className="flex items-center justify-center gap-2 px-2 font-display text-[clamp(0.95rem,4.2vw,1.25rem)] font-extrabold text-tsel-gold drop-shadow-[0_2px_0_rgba(124,12,30,0.5)]">
+        <Star className="h-5 w-5 shrink-0 fill-tsel-gold text-tsel-gold" strokeWidth={2} />
+        <span className="text-balance leading-tight">Selamat kamu bisa langsung ambil</span>
+        <Star className="h-5 w-5 shrink-0 fill-tsel-gold text-tsel-gold" strokeWidth={2} />
       </h2>
 
       {/* Orange ticket card with side notches */}
@@ -70,7 +75,9 @@ export function ResultOverlay({ prize }: ResultOverlayProps) {
             {prize.tagline}
           </p>
           <div className="mt-2.5 flex flex-col items-center leading-none">
-            <span className="font-display text-[clamp(3.5rem,18vw,5rem)] font-extrabold leading-[0.85] text-white drop-shadow-[0_5px_0_rgba(160,40,12,0.35)]">
+            <span
+              className={`font-display ${bigSize} font-extrabold leading-[0.85] text-white drop-shadow-[0_5px_0_rgba(160,40,12,0.35)]`}
+            >
               {prize.bigValue}
             </span>
             {showUnit && (
@@ -79,6 +86,11 @@ export function ResultOverlay({ prize }: ResultOverlayProps) {
               </span>
             )}
           </div>
+          {prize.note && (
+            <p className="mx-auto mt-2.5 max-w-[26ch] text-[11.5px] font-semibold leading-snug text-white/90">
+              {prize.note}
+            </p>
+          )}
         </div>
       </div>
 

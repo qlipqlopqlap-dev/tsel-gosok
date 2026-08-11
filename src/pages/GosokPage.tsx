@@ -4,11 +4,8 @@ import { ResultOverlay } from '../components/ResultOverlay'
 import { TicketGrid } from '../components/TicketGrid'
 import { ScratchSheet } from '../components/ScratchSheet'
 import { CAMPAIGN } from '../lib/content'
-import { GAMES } from '../lib/games'
-import { getPrize } from '../lib/prizes'
+import { PRIZE } from '../lib/prizes'
 import { useGameSession } from '../lib/useGameSession'
-
-const WIN = getPrize('kuota15')
 
 export function GosokPage() {
   const { prize, revealed, expired, setExpired, reveal, reduced } = useGameSession()
@@ -26,20 +23,14 @@ export function GosokPage() {
 
   const handleScratched = useCallback(() => {
     setSheetOpen(false)
-    reveal(WIN)
+    reveal(PRIZE)
   }, [reveal])
-
-  const handleCloseSheet = useCallback(() => {
-    setSheetOpen(false)
-    // Backed out before scratching → unlock the tickets.
-    if (!revealed) setPicked(null)
-  }, [revealed])
 
   return (
     <>
       <GameScreen
-        dapat={GAMES.scratch.lead}
-        instruction={GAMES.scratch.instruction}
+        dapat={CAMPAIGN.lead}
+        instruction={CAMPAIGN.instruction}
         expired={expired}
         onExpire={() => setExpired(true)}
       >
@@ -50,13 +41,7 @@ export function GosokPage() {
         )}
       </GameScreen>
 
-      <ScratchSheet
-        open={sheetOpen}
-        prize={WIN}
-        instant={reduced}
-        onScratched={handleScratched}
-        onClose={handleCloseSheet}
-      />
+      <ScratchSheet open={sheetOpen} prize={PRIZE} instant={reduced} onScratched={handleScratched} />
     </>
   )
 }

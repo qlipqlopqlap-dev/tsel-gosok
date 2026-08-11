@@ -3,9 +3,6 @@ node_modules
 dist
 dist-ssr
 
-# generated
-src/routeTree.gen.ts
-
 # env & secrets (keep the example)
 .env
 .env.*

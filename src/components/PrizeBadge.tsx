@@ -1,28 +1,17 @@
 import type { Prize } from '../lib/prizes'
 
-interface PrizeBadgeProps {
-  prize: Prize
-  size?: 'sm' | 'md' | 'lg'
-  /** Label colour. 'light' = white (for dark/red backgrounds). */
-  tone?: 'dark' | 'light'
-}
-
-const RING = { sm: 'h-10 w-10', md: 'h-16 w-16', lg: 'h-24 w-24' }
-const GLYPH = { sm: 'h-5 w-5', md: 'h-8 w-8', lg: 'h-12 w-12' }
-const TEXT = { sm: 'text-[11px]', md: 'text-lg', lg: 'text-2xl' }
-
-/** Icon-in-circle + prize label, reused on the reveal and result screens. */
-export function PrizeBadge({ prize, size = 'md', tone = 'dark' }: PrizeBadgeProps) {
+/** Icon-in-circle + prize label, revealed underneath the scratch coating. */
+export function PrizeBadge({ prize }: { prize: Prize }) {
   const Icon = prize.icon
-  const labelColor = tone === 'light' ? 'text-white' : 'text-tsel-ink'
   return (
-    <div className="flex flex-col items-center gap-1.5 text-center">
-      <span className={['grid place-items-center rounded-full text-white shadow-clay', prize.accent, RING[size]].join(' ')}>
-        <Icon className={GLYPH[size]} strokeWidth={2.25} />
+    <div className="flex flex-col items-center gap-1.5 px-3 text-center">
+      <span className={['grid h-20 w-20 place-items-center rounded-full text-white shadow-clay', prize.accent].join(' ')}>
+        <Icon className="h-10 w-10" strokeWidth={2.25} />
       </span>
-      <span className={['font-display font-extrabold leading-tight', labelColor, TEXT[size]].join(' ')}>
-        {size === 'sm' ? prize.short : prize.label}
-      </span>
+      <span className="font-display text-2xl font-extrabold leading-tight text-tsel-ink">{prize.label}</span>
+      {prize.note && (
+        <span className="max-w-[24ch] text-[11px] font-semibold leading-snug text-tsel-ink/70">{prize.note}</span>
+      )}
     </div>
   )
 }
